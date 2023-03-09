@@ -1,30 +1,50 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <div>
+    <headerComponent/>
+    <addTasks @doneTask="ListdoneTasks.push($event)"/>
+    <DoneTasks :DoneTasks="ListdoneTasks"/>
+  </div>
 </template>
 
+<script lang="ts">
+import headerComponent from './components/headerComponent.vue';
+import addTasks from './components/AddTask.vue';
+import DoneTasks from './components/DoneTasks.vue';
+
+
+export default{
+  data(){
+    return {
+      ListdoneTasks: [''],
+    }
+  },
+  components: {
+    headerComponent,
+    addTasks,
+    DoneTasks,
+  },
+}
+
+// import { Vue, Options } from "vue-class-component";
+// @Options({
+//   data(){
+//     return {
+//       ListdoneTasks: [''],
+//     }
+//   },
+//   components: {
+//     headerComponent,
+//     addTasks,
+//     DoneTasks,
+//   },
+// })
+// export default class indexApp extends Vue {
+  
+// }
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+AjouterTask {
+  margin-top: 50px;
 }
 </style>

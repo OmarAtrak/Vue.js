@@ -6,9 +6,9 @@
           <div class="card-header">
             <form class="form-inline my-2 my-lg-0 mx-auto">
               <input class="form-control mr-sm-2" placeholder="Ajouter une Tâche"
-                style="width: 70%; float: left; margin-right: 8px" v-model="taskValue" />
+                style="width: 70%; float: left; margin-right: 8px" v-model="taskValue.Description" />
               <input class="btn btn-primary my-2 my-sm-0 float-left" type="button"
-                @click="tasks.push(taskValue), taskValue = ''" value="Add" />
+                @click="tasks.push(taskValue), taskValue.Description = ''" value="Add" />
             </form>
           </div>
           <!-- <tasksComponent :tasks="tasks"></tasksComponent> -->
@@ -20,7 +20,7 @@
                 </tr>
               </thead>
               <tbody v-if="tasks.length > 1">
-                <tr v-for="task, index in tasks" :key="task">
+                <tr v-for="task, index in tasks" :key="task.Description">
                   <td v-if="task">
                     <input id="checkTask" style="margin-right: 10px" type="checkbox" class="form-check-input"
                       @input="$emit('doneTask', task); tasks.splice(index, 1)" />
@@ -47,11 +47,17 @@
 <script lang="ts">
 
 //import tasksComponent from "./tasksComponent.vue";
+import '../Tache/model/Tache.ts';
+import TasksComponent from './tasksComponent.vue';
+
 export default {
   data() {
     return {
-      taskValue: "",
-      tasks: [''],
+      taskValue : new Tache(),
+      // taskValue:{
+      //   type:Object,
+      // },
+      tasks: [new Tache()],
     }
   },
   // components: {

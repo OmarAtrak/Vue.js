@@ -11,10 +11,15 @@
                     <div class="card-body bg-light">
                         <table v-if="DoneTasks.length > 1" class="table table-hover">
                             <tbody>
-                                <tr v-for="task,index in DoneTasks" :key="task">
-                                    <td v-if="task">
+                                <tr v-for="task,index in DoneTasks" :key="task.Description">
+                                    <td v-if="task.Description">
                                         <input checked="true" disabled style="margin-right: 10px" type="checkbox"/>
-                                        {{ task }}
+                                        {{ task.Description }}
+                                    </td>
+                                    <td v-if="task.Description">
+                                        {{ task.Date }}
+                                    </td>
+                                    <td v-if="task.Description">
                                         <input class="btn btn-danger my-2 my-sm-0" style="float: right;" type="button"
                                         value="Delete" @click="data = DoneTasks, data.splice(index,1)"/>
                                     </td>

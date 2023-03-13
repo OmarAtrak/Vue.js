@@ -23,9 +23,4 @@ class Tache{
     public set Status(status : boolean){
         this._statut = status;
     }
-    public constructor(){
-        this._description = '';
-        this._date = new Date();
-        this._statut = false;
-    }
 }
